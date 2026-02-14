@@ -16,6 +16,9 @@ from .tools import (
 )
 from .prompts import SYSTEM_PROMPT
 import os
+from openai import OpenAI
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 class StudyMateAgent:
