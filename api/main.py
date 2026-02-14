@@ -26,7 +26,9 @@ from agent import StudyMateAgent
 app = FastAPI(
     title="StudyMate API",
     description="AI Teaching Agent using Questioning Method",
-    version="1.0.0"
+    version="1.0.0",
+    docs_url="/docs",
+    openapi_url="/openapi.json",
 )
 
 # Enable CORS (for Streamlit to connect)
