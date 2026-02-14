@@ -40,8 +40,7 @@ class StudyMateAgent:
         # Initialize LLM
         self.llm = ChatOpenAI(
             model=self.model,
-            temperature=0.7,
-            api_key=os.getenv("OPENAI_API_KEY"),
+            temperature=0.7
         )
         
         # Simple chat history
