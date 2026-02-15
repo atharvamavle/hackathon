@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import base64
 
-API_BASE = "http://localhost:8000"
+API_BASE = st.secrets["API_BASE_URL"].rstrip("/")
 
 st.set_page_config(page_title="StudyMate", page_icon="🧠", layout="wide")
 
