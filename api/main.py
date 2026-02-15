@@ -13,7 +13,7 @@ import os
 from dotenv import load_dotenv
 
 # Force load .env
-load_dotenv(override=True)
+load_dotenv()
 
 # Verify it's loaded
 print(f"🔑 OPENAI_API_KEY loaded: {'✅' if os.getenv('OPENAI_API_KEY') else '❌'}")
