@@ -8,90 +8,183 @@
 
 | Field | Your Answer |
 |-------|-------------|
-| **Name** | |
-| **University / Employer** | |
+| **Name** |Atharva Santosh Mavale |
+| **University / Employer** | Deakin University |
 
 ### Project
 
 | Field | Your Answer |
 |-------|-------------|
-| **Project Name** | |
-| **One-Line Description** | |
+| **Project Name** |StudyMate AI (AI Questioning Tutor for Code Repos) | 
+| **One-Line Description** |An AI-powered **Questioning coding tutor** that helps students understand code (especially intimidating GitHub repositories) by asking the right questions, giving progressive hints, and guiding learning step-by-step. |
+| **Live App Link** | https://atharvamavle-hackathon-uiapp-ps07su.streamlit.app/ |
 | **Demo Video Link** | |
-| **Tech Stack** | |
-| **AI Provider(s) Used** | |
+| **Tech Stack** | FastAPI Uvicorn, OpenAI ,Python SDK, LangChain|
+| **AI Provider(s) Used** | OpenAI , GPT |
 
-# StudyMate — Learn Any GitHub Repo With a Socratic AI Tutor
+# StudyMate  — AI Questioning Tutor for Code Repos
 
-StudyMate is a web app that helps you understand unfamiliar codebases by chatting with an AI “study buddy” that teaches using the Socratic method (questions, guided hints, and progressive explanations). It’s built for hackathon speed, but structured like a real product: a FastAPI backend + Streamlit UI.
+An AI-powered **Questioning coding tutor** that helps students understand code (especially intimidating GitHub repositories) by asking the right questions, giving progressive hints, and guiding learning step-by-step.
 
-Repo: https://github.com/atharvamavle/hackathon.git
+This project was built for the **Sophiie AI Agents Hackathon 2026**.
 
----
-
-## The problem we solved
-
-Reading a new repository is hard because you don’t know:
-- Where to start.
-- Which files matter.
-- How components connect.
-- What to ask next.
-
-StudyMate turns a repo URL into an interactive learning session, so you can ask questions like “What does this function do?”, “How does the architecture work?”, and “What should I read next?”
+- Backend: FastAPI (deployed on Render)
+- Frontend: Streamlit (deployed on Streamlit Community Cloud)
+- LLM: OpenAI (configured via `OPENAI_API_KEY`)
 
 ---
 
-## What we built
+## The gap we’re solving (real problem)
 
-### Components
-- `api/` — FastAPI backend with session creation and chat endpoints.
-- `agent/` — core teaching agent logic (LLM wrapper + prompts + tools).
-- `ui/` — Streamlit front-end for a polished chat UX.
+You’ve identified a massive gap in AI education that most tools don’t solve well:
 
-This repository is forked from the Sophiie AI Agents Hackathon repo template.
+**Current reality**
+- Students copy‑paste AI-generated code without understanding.
+- They get stuck when code breaks or needs changes.
+- Typical chatbots either dump code or give overwhelming explanations.
+- Large GitHub repos feel impossible to start (lots of files, complex structure).
+- Traditional step-by-step tutorials don’t adapt to a student’s confusion.
+
+**Our solution**
+- A **Questioning AI agent** that teaches by asking questions instead of giving answers.
+- Students learn by doing: the agent helps them reason, not copy.
+- Adaptive dialogue based on student level (beginner/intermediate/advanced).
+- Progressive hints when needed.
 
 ---
 
-## Live deployment
+## Why this is perfect for the hackathon
 
-- Backend (Render): https://hackathon-24mr.onrender.com
-- Backend docs: https://hackathon-24mr.onrender.com/docs
-- Health check: https://hackathon-24mr.onrender.com/health
+1) **Unique & impactful**
+- Directly addresses the “AI copy‑paste crisis” in education.
+- Focuses on understanding and reasoning, not output.
+
+2) **Agentic behavior (not just a chatbot)**
+- Multi-turn memory (session-based chat).
+- Guided questioning (Questioning method).
+- Prompt-driven teaching behavior.
+
+3) **Production-ready architecture**
+- Deployed backend + UI.
+- Health endpoint and API docs.
+
+---
+
+## Features
+
+- 🤖 **Questioning dialogue**: Probing questions instead of direct answers.
+- 💬 **Session-based chat**: Each user gets a `session_id`.
+- 🧠 **Adaptive teaching**: Student name + knowledge level influence the tone and depth.
+- 🧪 **API docs included**: FastAPI Swagger at `/docs`.
+- 🚀 **Deployed**: Backend on Render, UI on Streamlit.
 
 ---
 
 ## Tech stack
-- Python
+
+### Backend
 - FastAPI
-- Streamlit
-- OpenAI API
+- Uvicorn
+- OpenAI Python SDK
 - LangChain `ChatOpenAI`
+
+### Frontend
+- Streamlit
+- Requests
 
 ---
 
-## How to run locally
+## Live application
 
-### 1) Clone & install
+- Backend (Render): https://hackathon-24mr.onrender.com
+- API docs: https://hackathon-24mr.onrender.com/docs
+- Health check: https://hackathon-24mr.onrender.com/health
+
+---
+
+## Project structure
+
+```text
+hackathon/
+├── agent/                # Core agent logic
+     └── __init__.py
+     └── core.py
+     └── prompts.py
+     └── tools.py          
+├── api/                   # FastAPI backend
+│   └── main.py            # API routes: /session/create, /chat, /health
+├── ui/                    # Streamlit UI
+│   └── app.py             # Frontend app
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
+
+---
+
+## How it works (core flow)
+
+```text
+Student selects a GitHub repo (or future: paste text / upload file)
+        ↓
+Backend creates a session and agent
+        ↓
+Agent: “What interests you most about this project?”
+        ↓
+Student answers
+        ↓
+Agent asks guided questions + gives hints
+        ↓
+Student builds understanding step-by-step
+```
+
+---
+
+## Prerequisites
+
+- Python 3.9+
+- Git
+- OpenAI API key
+
+---
+
+## Installation & local run
+
+### 1) Clone
 ```bash
 git clone https://github.com/atharvamavle/hackathon.git
 cd hackathon
-python -m venv .venv
-# Windows:
-. .venv/Scripts/activate
-# macOS/Linux:
-# source .venv/bin/activate
+```
 
+### 2) Create and activate venv
+**Windows (PowerShell):**
+```powershell
+python -m venv .venv
+. .\.venv\Scripts\Activate.ps1
+```
+
+**macOS/Linux:**
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 3) Install dependencies
+```bash
 pip install -r requirements.txt
 ```
 
-### 2) Configure environment variables
-Create a `.env` locally (do not commit it):
+### 4) Set environment variables (local)
+Create a local `.env` file in the repo root:
+
 ```env
-OPENAI_API_KEY=sk-...
+OPENAI_API_KEY=sk-your-real-key
 OPENAI_MODEL=gpt-4o-mini
 ```
 
-### 3) Run the backend (FastAPI)
+**Important:** Do not commit `.env`.
+
+### 5) Run backend
 ```bash
 uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
 ```
@@ -100,59 +193,82 @@ Verify:
 - http://localhost:8000/health
 - http://localhost:8000/docs
 
-### 4) Run the UI (Streamlit)
+### 6) Run Streamlit UI
 ```bash
 streamlit run ui/app.py
 ```
+Open the URL Streamlit prints (usually http://localhost:8501).
 
 ---
 
-## How to deploy (Render + Streamlit Community Cloud)
+## Deploy
 
 ### Backend on Render
-1. Create a new Render “Web Service” connected to this GitHub repo.
-2. Set env vars in Render:
-   - `OPENAI_API_KEY` (required)
-   - `OPENAI_MODEL` (optional)
-3. Set the health check path to `/health`.
+1. Create a Render **Web Service** connected to this repo.
+2. Set environment variables:
+   - `OPENAI_API_KEY` = your real key
+   - `OPENAI_MODEL` = optional
+3. Set Health Check Path to: `/health`
+4. Deploy.
 
 ### UI on Streamlit Community Cloud
-1. Create a new Streamlit app pointing to `ui/app.py`.
-2. Add Streamlit secrets:
+In Streamlit app settings → **Secrets**, add:
+
 ```toml
 API_BASE_URL = "https://hackathon-24mr.onrender.com"
 ```
-3. In `ui/app.py`, set `API_BASE = st.secrets["API_BASE_URL"].rstrip("/")`.
+
+In `ui/app.py`, set:
+
+```python
+API_BASE = st.secrets["API_BASE_URL"].rstrip("/")
+```
 
 ---
 
 ## API endpoints
 
-- `GET /health`
-- `POST /session/create`
-- `POST /chat`
-- `GET /session/{session_id}/history`
-- `GET /session/{session_id}/progress`
+- `GET /` — basic status
+- `GET /health` — health + whether `OPENAI_API_KEY` is configured
+- `POST /session/create` — start a session, returns `session_id` and greeting
+- `POST /chat` — send a message, returns model response
+- `GET /session/{session_id}/history` — session transcript
+- `GET /session/{session_id}/progress` — progress tracking (if enabled)
 
 ---
 
-## Future work
-- Clone + index GitHub repos server-side and add retrieval (RAG) grounded in actual files.
-- Add streaming responses, citations, and “trace call path” / “explain file” tools.
-- Persist sessions and progress tracking in a database.
-- Add auth, rate limiting, and safer CORS defaults.
+## Troubleshooting
+
+### 401 Incorrect API key
+- Make sure `OPENAI_API_KEY` is set (Render env vars for production, `.env` for local).
+- Ensure `.env` is not committed and you are not overriding production env vars.
+
+### UI can’t reach backend
+- In Streamlit Cloud, `localhost` won’t work.
+- Use `API_BASE_URL` secret pointing to your Render URL.
 
 ---
 
-## Security
-- Never commit API keys.
-- Store secrets in Render/Streamlit secret managers.
-- Rotate keys if they were ever pushed to GitHub.
+## Future improvements
+
+- Repo cloning + indexing: actually clone GitHub repos server-side.
+- Retrieval / RAG grounded in real files and code snippets.
+- “Explain this file” and “trace call path” tools using AST parsing.
+- Better persistence: database for sessions + progress tracking.
+- Streaming responses and richer UI.
+- Auth + rate limiting + safer CORS defaults.
 
 ---
 
-## Credits
-Built for the Sophiie AI Agents Hackathon 2026.
+## Author
+
+Atharva Santosh Mavale
+
+Contact: atharvamavale40@gmail.com
+
+---
+
+**Status:** ✅ Live and deployed
 
 
 [sophiie.com](https://sophiie.com)
