@@ -18,7 +18,7 @@
 | **Project Name** |StudyMate AI (AI Questioning Tutor for Code Repos) | 
 | **One-Line Description** |An AI-powered **Questioning coding tutor** that helps students understand code (especially intimidating GitHub repositories) by asking the right questions, giving progressive hints, and guiding learning step-by-step. |
 | **Live App Link** | https://atharvamavle-hackathon-uiapp-ps07su.streamlit.app/ |
-| **Demo Video Link** | |
+| **Demo Video Link** | https://youtu.be/CJm-7gzGaEs|
 | **Tech Stack** | FastAPI Uvicorn, OpenAI ,Python SDK, LangChain|
 | **AI Provider(s) Used** | OpenAI , GPT |
 
