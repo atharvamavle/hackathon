@@ -96,9 +96,9 @@ You’ve identified a massive gap in AI education that most tools don’t solve 
 
 ## Live application
 
-- Backend (Render): https://hackathon-24mr.onrender.com
-- API docs: https://hackathon-24mr.onrender.com/docs
-- Health check: https://hackathon-24mr.onrender.com/health
+- Live APP : https://atharvamavle-hackathon-uiapp-ps07su.streamlit.app/
+- Backend (Render): https://hackathon-24mr.onrender.com/docs#/default/create_session_session_create_post
+
 
 ---
 
@@ -275,4 +275,3 @@ Contact: atharvamavale40@gmail.com
 
 ---
 
-**Good luck. Build something that makes us say "wow."**
